@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
 	"github.com/junaidmd0980/pokedexcli/internal/pokecache"
 )
 
@@ -23,7 +24,7 @@ func startRepl(cfg *config) {
 
 		var args []string
 		if len(words) > 1 {
-    		args = words[1:]
+			args = words[1:]
 		}
 
 		if cmd, exists := cfg.commands[commandName]; exists {
@@ -45,11 +46,11 @@ func cleanInput(text string) []string {
 }
 
 type config struct {
-	commands 		map[string]cliCommand
-	nextLocURL 		*string
-	previousLocURL  *string
-	cache			pokecache.Cache
-	pokedex 		map[string]Pokemon
+	commands       map[string]cliCommand
+	nextLocURL     *string
+	previousLocURL *string
+	cache          pokecache.Cache
+	pokedex        map[string]Pokemon
 }
 
 type cliCommand struct {
@@ -71,19 +72,19 @@ func getCommands() map[string]cliCommand {
 			callback:    commandMap,
 		},
 		"mapb": {
-			name: 		 "mapb",
+			name:        "mapb",
 			description: "Displays previous 20 location areas",
-			callback: 	 commandMapb,
+			callback:    commandMapb,
 		},
 		"explore": {
-			name: 		 "explore <area_name>",
+			name:        "explore <area_name>",
 			description: "List the pokemon in a location area",
-			callback: 	 commandExplore,
+			callback:    commandExplore,
 		},
 		"catch": {
-			name: 		 "catch <pokemon_name>",
+			name:        "catch <pokemon_name>",
 			description: "Attempt to catch a pokemon and add it to your pokedex",
-			callback: 	 commandCatch,
+			callback:    commandCatch,
 		},
 		"inspect": {
 			name:        "inspect <pokemon_name>",
@@ -91,9 +92,9 @@ func getCommands() map[string]cliCommand {
 			callback:    commandInspect,
 		},
 		"pokedex": {
-		    name:        "pokedex",
-		    description: "Displays all the pokemon you have caught",
-		    callback:    commandPokedex,
+			name:        "pokedex",
+			description: "Displays all the pokemon you have caught",
+			callback:    commandPokedex,
 		},
 		"exit": {
 			name:        "exit",

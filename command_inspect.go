@@ -6,7 +6,7 @@ import (
 
 func commandInspect(cfg *config, args ...string) error {
 	if len(args) == 0 {
-		fmt.Errorf("you must provide a pokemon name")
+		return fmt.Errorf("you must provide a pokemon name")
 	}
 
 	pokemonName := args[0]
