@@ -1,77 +1,91 @@
 # Pokedex CLI
 
-A command-line Pokedex built in Go, powered by the [PokeAPI](https://pokeapi.co/). Explore locations, catch Pokemon, and inspect your collection, all from the terminal.
+A command-line Pokedex built in Go, powered by the [PokeAPI](https://pokeapi.co/). Explore locations, catch Pokémon, and inspect your collection—all directly from your terminal.
 
-## Features
+## 🚀 Features
 
-- Explore the Pokemon world map, one page at a time
-- Explore individual locations to see which Pokemon live there
-- Attempt to catch Pokemon (success is probability-based on their base experience)
-- Inspect Pokemon you've caught to see their stats and types
-- View your Pokedex of all caught Pokemon
-- Built-in caching layer to avoid hammering the API with repeat requests
+- **World Map Exploration:** Navigate the Pokémon world map area-by-area.
+- **Location Scanning:** Explore specific locations to discover which Pokémon inhabit them.
+- **Catch Mechanics:** Attempt to catch wild Pokémon using a probability engine scaled by their base experience.
+- **Stat Inspection:** Examine detailed statistics, types, and properties of any Pokémon you catch.
+- **Pokedex Ledger:** View a structured inventory of your full collection.
+- **Internal Caching:** Built-in caching layer with timed expirations to prevent excessive API throttling.
 
-## Installation
+## 📋 Requirements
 
-Clone the repo and build the binary:
+- **Go 1.20** or newer
 
-\`\`\`bash
-git clone <your-repo-url>
-cd pokedexcli
-go build -o pokedex
-\`\`\`
+## 🛠️ Installation & Setup
 
-## Usage
+1. **Clone the repository:**
+   ```bash
+   git clone <your-repo-url>
+   cd pokedexcli
+   ```
 
-Run the compiled binary to start the REPL:
+2. **Build the binary:**
+   ```bash
+   go build -o pokedex
+   ```
 
-\`\`\`bash
+## 🎮 Usage
+
+Launch the compiled binary to start the interactive REPL loop:
+```bash
 ./pokedex
-\`\`\`
+```
 
-You'll be dropped into an interactive prompt:
+You will be greeted by the Pokedex command prompt:
+```text
+Pokedex > 
+```
 
-\`\`\`
-Pokedex >
-\`\`\`
-
-## Commands
+## ⌨️ Available Commands
 
 | Command | Description |
-|---|---|
-| `help` | Displays a help message |
-| `map` | Displays the next 20 location areas |
-| `mapb` | Displays the previous 20 location areas |
-| `explore <location-area>` | Lists the Pokemon found in a given location area |
-| `catch <pokemon-name>` | Attempts to catch the named Pokemon |
-| `inspect <pokemon-name>` | Shows details about a caught Pokemon |
-| `pokedex` | Lists the names of all Pokemon you've caught |
-| `exit` | Exits the Pokedex |
+| :--- | :--- |
+| `help` | Displays a helpful usage guide and lists commands |
+| `map` | Displays the next 20 location areas on the map |
+| `mapb` | Displays the previous 20 location areas on the map |
+| `explore <location-area>` | Lists all Pokémon species native to the given area |
+| `catch <pokemon-name>` | Attempts to catch a named Pokémon (chance based on difficulty) |
+| `inspect <pokemon-name>` | Displays stats, height, weight, and types of a caught Pokémon |
+| `pokedex` | Lists the names of all Pokémon currently in your collection |
+| `exit` | Closes the Pokedex interface and exits the program |
 
-## Example Session
+## 🕹️ Example Session
 
-\`\`\`
+```text
 Pokedex > catch pidgey
 Throwing a Pokeball at pidgey...
 pidgey was caught!
 You may now inspect it with the inspect command.
+
 Pokedex > catch caterpie
 Throwing a Pokeball at caterpie...
 caterpie was caught!
 You may now inspect it with the inspect command.
+
 Pokedex > pokedex
 Your Pokedex:
  - pidgey
  - caterpie
-\`\`\`
+```
 
-## Project Structure
+## 📁 Project Structure
 
-- `main.go` / `repl.go` — REPL loop and command dispatch
-- `command_*.go` — individual command implementations (map, explore, catch, inspect, pokedex, help, exit)
-- `internal/pokecache` — simple in-memory cache with expiration
+```text
+pokedexcli/
+├── main.go               # Application entry point
+├── repl.go               # Core REPL loop, text parsing, and command routing
+├── command_*.go          # Individual command handlers (map, catch, inspect, etc.)
+├── internal/
+│   └── pokecache/        # Custom in-memory cache mechanism with automatic janitor reaping
+├── go.mod                # Go module configurations
+└── README.md             # Project documentation
+```
 
-## Built With
+## 🧰 Built With
 
-- Go
-- [PokeAPI](https://pokeapi.co/)
+- **Go** (Golang)
+- [PokeAPI](https://pokeapi.co/) — The RESTful Pokémon API
