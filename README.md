@@ -19,7 +19,7 @@ A command-line Pokedex built in Go, powered by the [PokeAPI](https://pokeapi.co/
 
 1. **Clone the repository:**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/junaidmd0980/pokedexcli
    cd pokedexcli
    ```
 
